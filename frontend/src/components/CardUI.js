@@ -31,7 +31,7 @@ function CardUI()
     var obj = { userId: userId, card: card.value };
     var js = JSON.stringify(obj);
     try {
-        const response = await fetch(buildPath('/api/addcard'),
+        const response = await fetch(buildPath('api/addcard'),
               {
                 method: 'POST', body: js, headers: {
                         'Content-Type':
@@ -57,7 +57,7 @@ function CardUI()
     var obj = { userId: userId, search: search.value };
     var js = JSON.stringify(obj);
     try {
-        const response = await fetch(buildPath('/api/searchcards'),
+        const response = await fetch(buildPath('api/searchcards'),
             {
                 method: 'POST', body: js, headers: {
                         'Content-Type':
