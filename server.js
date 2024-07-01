@@ -6,9 +6,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const MongoClient = require('mongodb').MongoClient;
-const url =
-'mongodb+srv://ecoXander:G0f0rtw0@cluster0.9nuh4gz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const client = new MongoClient(url);
+require('dotenv').config();
+const client = new MongoClient(process.env.MONGODB_URI);
 client.connect();
 
 const app = express();

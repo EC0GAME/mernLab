@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 function CardUI()
 {
+  const app_name = 'cop4331-630-2024-18ab2ad6b8b8'
+  function buildPath(route)
+  {
+    if (process.env.NODE_ENV === 'production')
+    {
+      return 'https://' + app_name + '.herokuapp.com/' + route;
+    }
+    else
+    {
+      return 'http://localhost:5001/' + route;
+    }
+  }
   var card = '';
   var search = '';
   const [message,setMessage] = useState('');
@@ -12,7 +24,7 @@ function CardUI()
     var obj = { userId: userId, card: card.value };
     var js = JSON.stringify(obj);
     try {
-        const response = await fetch('http://localhost:5001/api/addcard',
+        const response = await fetch(buildPath('/api/addcard'),
               {
                 method: 'POST', body: js, headers: {
                         'Content-Type':
@@ -38,7 +50,7 @@ function CardUI()
     var obj = { userId: userId, search: search.value };
     var js = JSON.stringify(obj);
     try {
-        const response = await fetch('http://localhost:5000/api/searchcards',
+        const response = await fetch(buildPath('/api/searchcards'),
             {
                 method: 'POST', body: js, headers: {
                         'Content-Type':
